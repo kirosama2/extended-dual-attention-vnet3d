@@ -1,1 +1,1 @@
-__autho
+__author__ = 
