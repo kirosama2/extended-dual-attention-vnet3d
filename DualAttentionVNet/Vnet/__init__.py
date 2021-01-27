@@ -1,1 +1,1 @@
-__author__ = 'junqia
+__author__ = 'junqiang chen'
