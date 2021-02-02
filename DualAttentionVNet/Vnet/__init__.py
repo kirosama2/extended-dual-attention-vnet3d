@@ -1,2 +1,2 @@
 __author__ = 'junqiang chen'
-__vers
+__version_
