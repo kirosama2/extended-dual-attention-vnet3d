@@ -1,2 +1,2 @@
 __author__ = 'junqiang chen'
-__version_
+__version__ = '1.
