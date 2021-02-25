@@ -23,3 +23,9 @@ def load_itk(filename):
 
 def removesmallConnectedCompont(sitk_maskimg, rate=0.5):
     cc = sitk.ConnectedComponent(sitk_maskimg)
+    stats = sitk.LabelIntensityStatisticsImageFilter()
+    stats.Execute(cc, sitk_maskimg)
+    maxlabel = 0
+    maxsize = 0
+    for l in stats.GetLabels():
+        size = stats.GetPhysicalSize(l)
