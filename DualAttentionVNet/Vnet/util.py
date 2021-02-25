@@ -16,3 +16,10 @@ def load_itk(filename):
     rescalFilt = sitk.RescaleIntensityImageFilter()
     rescalFilt.SetOutputMaximum(255)
     rescalFilt.SetOutputMinimum(0)
+    # Reads the image using SimpleITK
+    itkimage = rescalFilt.Execute(sitk.Cast(sitk.ReadImage(filename), sitk.sitkFloat32))
+    return itkimage
+
+
+def removesmallConnectedCompont(sitk_maskimg, rate=0.5):
+    cc = sitk.ConnectedComponent(sitk_maskimg)
