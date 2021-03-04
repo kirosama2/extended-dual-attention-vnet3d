@@ -42,3 +42,10 @@ def removesmallConnectedCompont(sitk_maskimg, rate=0.5):
     outmask = labelmaskimage.copy()
     outmask[labelmaskimage != maxlabel] = 0
     for i in range(len(not_remove)):
+        outmask[labelmaskimage == not_remove[i]] = 255
+    return outmask
+
+
+def getLargestConnectedCompont(sitk_maskimg):
+    cc = sitk.ConnectedComponent(sitk_maskimg)
+    stats = sitk.LabelIntensityStatisticsImageFilter()
