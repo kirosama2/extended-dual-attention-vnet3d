@@ -29,3 +29,16 @@ def removesmallConnectedCompont(sitk_maskimg, rate=0.5):
     maxsize = 0
     for l in stats.GetLabels():
         size = stats.GetPhysicalSize(l)
+        if maxsize < size:
+            maxlabel = l
+            maxsize = size
+
+    not_remove = []
+    for l in stats.GetLabels():
+        size = stats.GetPhysicalSize(l)
+        if size > maxsize * rate:
+            not_remove.append(l)
+    labelmaskimage = sitk.GetArrayFromImage(cc)
+    outmask = labelmaskimage.copy()
+    outmask[labelmaskimage != maxlabel] = 0
+    for i in range(len(not_remove)):
