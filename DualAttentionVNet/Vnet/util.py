@@ -53,3 +53,12 @@ def getLargestConnectedCompont(sitk_maskimg):
     maxlabel = 0
     maxsize = 0
     for l in stats.GetLabels():
+        size = stats.GetPhysicalSize(l)
+        if maxsize < size:
+            maxlabel = l
+            maxsize = size
+
+    labelmaskimage = sitk.GetArrayFromImage(cc)
+    outmask = labelmaskimage.copy()
+    outmask[labelmaskimage == maxlabel] = 255
+    outmask[labelmaskimage != maxlabel] = 0
