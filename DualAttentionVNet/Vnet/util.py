@@ -62,3 +62,10 @@ def getLargestConnectedCompont(sitk_maskimg):
     outmask = labelmaskimage.copy()
     outmask[labelmaskimage == maxlabel] = 255
     outmask[labelmaskimage != maxlabel] = 0
+    return outmask
+
+
+def morphologicaloperation(sitk_maskimg, kernelsize, name='open'):
+    if name == 'open':
+        morphoimage = sitk.BinaryMorphologicalOpening(sitk_maskimg, [kernelsize, kernelsize, kernelsize])
+        labelmaskimage = sitk.GetArrayFromImage(morphoimage)
