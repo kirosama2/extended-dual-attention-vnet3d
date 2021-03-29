@@ -69,3 +69,11 @@ def morphologicaloperation(sitk_maskimg, kernelsize, name='open'):
     if name == 'open':
         morphoimage = sitk.BinaryMorphologicalOpening(sitk_maskimg, [kernelsize, kernelsize, kernelsize])
         labelmaskimage = sitk.GetArrayFromImage(morphoimage)
+        outmask = labelmaskimage.copy()
+        outmask[labelmaskimage == 1.0] = 255
+        return outmask
+    if name == 'close':
+        morphoimage = sitk.BinaryMorphologicalClosing(sitk_maskimg, [kernelsize, kernelsize, kernelsize])
+        labelmaskimage = sitk.GetArrayFromImage(morphoimage)
+        outmask = labelmaskimage.copy()
+        outmask[labelmaskimage == 1.0] = 255
