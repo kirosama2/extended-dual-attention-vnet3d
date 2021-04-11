@@ -77,3 +77,16 @@ def morphologicaloperation(sitk_maskimg, kernelsize, name='open'):
         labelmaskimage = sitk.GetArrayFromImage(morphoimage)
         outmask = labelmaskimage.copy()
         outmask[labelmaskimage == 1.0] = 255
+        return outmask
+    if name == 'dilate':
+        morphoimage = sitk.BinaryDilate(sitk_maskimg, [kernelsize, kernelsize, kernelsize])
+        labelmaskimage = sitk.GetArrayFromImage(morphoimage)
+        outmask = labelmaskimage.copy()
+        outmask[labelmaskimage == 1.0] = 255
+        return outmask
+    if name == 'erode':
+        morphoimage = sitk.BinaryErode(sitk_maskimg, [kernelsize, kernelsize, kernelsize])
+        labelmaskimage = sitk.GetArrayFromImage(morphoimage)
+        outmask = labelmaskimage.copy()
+        outmask[labelmaskimage == 1.0] = 255
+        return outmask
