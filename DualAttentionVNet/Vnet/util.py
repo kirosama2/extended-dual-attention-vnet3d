@@ -90,3 +90,6 @@ def morphologicaloperation(sitk_maskimg, kernelsize, name='open'):
         outmask = labelmaskimage.copy()
         outmask[labelmaskimage == 1.0] = 255
         return outmask
+
+
+def gettestiamge():
