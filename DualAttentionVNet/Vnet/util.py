@@ -93,3 +93,9 @@ def morphologicaloperation(sitk_maskimg, kernelsize, name='open'):
 
 
 def gettestiamge():
+    src = load_itk("D:\Data\LIST\LITS-Challenge-Test-Data\\test-volume-" + str(51) + ".nii")
+    srcimg = sitk.GetArrayFromImage(src)
+    for i in range(np.shape(srcimg)[0]):
+        image = srcimg[i]
+        image = np.clip(image, 0, 255).astype('uint8')
+        cv2.imwrite("D:\Data\LIST\LITS-Challenge-Test-Data\\" + str(51) + "\\" + str(i) + ".bmp", image)
