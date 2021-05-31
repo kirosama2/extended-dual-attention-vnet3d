@@ -99,3 +99,8 @@ def gettestiamge():
         image = srcimg[i]
         image = np.clip(image, 0, 255).astype('uint8')
         cv2.imwrite("D:\Data\LIST\LITS-Challenge-Test-Data\\" + str(51) + "\\" + str(i) + ".bmp", image)
+
+
+def getmaxsizeimage():
+    srcpath = "D:\Data\LIST\LITS-Challenge-Test-Data\\test-volume-" + str(38) + ".nii"
+    maskpath = "D:\Data\LIST\\test\PredictMask\\38"
