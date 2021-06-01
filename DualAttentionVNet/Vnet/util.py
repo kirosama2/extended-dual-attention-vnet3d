@@ -104,3 +104,9 @@ def gettestiamge():
 def getmaxsizeimage():
     srcpath = "D:\Data\LIST\LITS-Challenge-Test-Data\\test-volume-" + str(38) + ".nii"
     maskpath = "D:\Data\LIST\\test\PredictMask\\38"
+
+    src = load_itk(srcpath)
+    srcimg = sitk.GetArrayFromImage(src)
+
+    maskimage = np.empty(shape=np.shape(srcimg), dtype=np.uint8)
+    index = 0
