@@ -130,3 +130,8 @@ def getmaxsizeimage():
 
 def save_npy2csv(path, name, labelnum=1, label=False):
     if label:
+        out = open(name, 'w')
+        file_list = glob(path + "*.npy")
+        out.writelines("index" + "," + "filename" + "\n")
+        for index in range(len(file_list)):
+            out.writelines(str(labelnum) + "," + file_list[index] + "\n")
