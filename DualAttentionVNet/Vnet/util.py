@@ -116,3 +116,8 @@ def getmaxsizeimage():
         index += 1
 
     sitk_maskimg = sitk.GetImageFromArray(maskimage)
+    origin = np.array(src.GetOrigin())
+    # Read the spacing along each dimension
+    spacing = np.array(src.GetSpacing())
+    sitk_maskimg.SetSpacing(spacing)
+    sitk_maskimg.SetOrigin(origin)
