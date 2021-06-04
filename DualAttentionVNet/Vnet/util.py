@@ -121,3 +121,12 @@ def getmaxsizeimage():
     spacing = np.array(src.GetSpacing())
     sitk_maskimg.SetSpacing(spacing)
     sitk_maskimg.SetOrigin(origin)
+    maskimage = getLargestConnectedCompont(sitk_maskimg)
+    for i in range(np.shape(maskimage)[0]):
+        image = maskimage[i]
+        image = np.clip(image, 0, 255).astype('uint8')
+        cv2.imwrite("D:\Data\LIST\\test\PredictMask\\38_1\\" + str(i) + ".bmp", image)
+
+
+def save_npy2csv(path, name, labelnum=1, label=False):
+    if label:
