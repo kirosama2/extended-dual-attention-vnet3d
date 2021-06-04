@@ -110,3 +110,9 @@ def getmaxsizeimage():
 
     maskimage = np.empty(shape=np.shape(srcimg), dtype=np.uint8)
     index = 0
+    for _ in os.listdir(maskpath):
+        masktmp = cv2.imread(maskpath + "/" + str(index) + ".bmp", cv2.IMREAD_GRAYSCALE)
+        maskimage[index, :, :] = masktmp
+        index += 1
+
+    sitk_maskimg = sitk.GetImageFromArray(maskimage)
